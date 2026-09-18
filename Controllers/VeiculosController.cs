@@ -18,14 +18,15 @@ namespace SimuladoOficina.Api.Controllers
 
         // GET: api/veiculos
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<VeiculoDto>>> GetVeiculos()
+        public async Task<ActionResult<IEnumerable<Veiculo>>> GetVeiculos()
         {
-            return await _context.Veiculos.Include(v => v.Cliente).Select(v => new VeiculoDto
-            {
-                Modelo = v.Modelo,
-                Placa = v.Placa,
-                NomeCliente = v.Cliente.Nome
-            }).ToListAsync();
+            return await _context.Veiculos.ToListAsync();
+            //return await _context.Veiculos.Include(v => v.Cliente).Select(v => new VeiculoDto
+            //{
+            //    Modelo = v.Modelo,
+            //    Placa = v.Placa,
+            //    NomeCliente = v.Cliente.Nome
+            //}).ToListAsync();
         }
 
         // GET: api/veiculos/{id}
